@@ -4,20 +4,15 @@ namespace ClassExample
 {
     class Parent
     {
-        public Parent()
-        {
-            Console.WriteLine("Parent()");
-        }
+        public static int counter = 0;
 
-        public Parent(int param)
-        {
-            Console.WriteLine("Parent(int param)");
-        }
+        public void CounteParent() { Parent.counter++; }
 
-        public Parent(string param)
-        {
-            Console.WriteLine("Parent(string param)");
-        }
+        public Parent() { Console.WriteLine("Parent()"); }
+
+        public Parent(int param) { Console.WriteLine("Parent(int param)"); }
+
+        public Parent(string param) { Console.WriteLine("Parent(string param)"); }
     }
 
     class Child : Parent
@@ -39,6 +34,14 @@ namespace ClassExample
         {
             Child childA = new Child();
             Child childB = new Child("string");
+
+            Parent parent = new Parent();
+            Child child = new Child();
+
+            parent.CounteParent();
+            child.CounteParent();
+            Console.WriteLine(Parent.counter);
+            Console.WriteLine(Child.counter);
         }
     }
 }
